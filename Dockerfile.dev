@@ -1,0 +1,18 @@
+FROM node:16-alpine
+
+WORKDIR '/app'
+
+COPY package.json .
+RUN npm install
+
+COPY . .
+
+CMD ["npm", "run", "start"]
+
+### command line
+# docker build -f Dockerfile.dev . 
+# support changes immediately
+# docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <DOCKER_IMG>
+
+### run test
+# docker run -it c02b00bca650 npm run test
